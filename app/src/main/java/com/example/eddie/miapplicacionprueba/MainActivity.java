@@ -10,14 +10,18 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-public JSONArray consulta;
+import static com.example.eddie.miapplicacionprueba.R.id.action_settings;
 
+public class MainActivity extends AppCompatActivity {
+    JSONObject jsonObject;
+    JSONArray jsonArrays=null;
+    TextView txvNombre, txvTelefono, txvCelular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +35,25 @@ public JSONArray consulta;
             public void onClick(View view) {
                 try{
                     //consulta almacena el JsonArray obtenido de la consulta:
-                    consulta = new Consulta().execute().get();
+                    jsonObject = new Consulta().execute().get();
+                    jsonArrays = jsonObject.getJSONArray("suppliers");
+                    //user contiene el objeto user del Json
+                    JSONObject user = jsonObject.getJSONObject("user");
+                    txvNombre = findViewById(R.id.txvNombre);
+                    txvTelefono = findViewById(R.id.txvTelefono);
+                    txvCelular = findViewById(R.id.txvCelular);
+
+                    txvNombre.setText(user.optString("name").concat(" "+user.optString("lastName")));
+                    txvTelefono.setText(user.optString("telephone"));
+                    txvCelular.setText(user.optString("celphone"));
+
                     //se guarda en una lista para poder mostrar los datos en el ListView
                     ArrayList<String> listaSuppliers = new ArrayList<>();
-                    for (int c =0; c < consulta.length(); c++){
+                    for (int c =0; c < jsonArrays.length(); c++){
                         //json es un objeto de cada array dentro del Json:
-                        JSONObject json = consulta.getJSONObject(c);
+                        JSONObject json = jsonArrays.getJSONObject(c);
                         //dir contiene el objeto address dentro de cada JsonArray
-                        JSONObject dir = (JSONObject) consulta.getJSONObject(c).get("address");
+                        JSONObject dir = (JSONObject) jsonArrays.getJSONObject(c).get("address");
                         //se obtienen los datos de cada objeto para formar un item de la lista:
                         String itemsLista = "ID: "+json.optString("id")
                                 .concat("\nName: "+json.optString("name"))
@@ -74,17 +89,15 @@ public JSONArray consulta;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
+        int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == action_settings) {
+            Toast.makeText(getApplicationContext(),"Settings",Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
 }
+/*...E..*/

@@ -9,15 +9,112 @@
     tools:showIn="@layout/activity_main">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <TextView
+                    android:id="@+id/lblNombre"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre: "
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+                <TextView
+                    android:id="@+id/lblTelefono"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono: "
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+                <TextView
+                    android:id="@+id/lblCel"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Celular: "
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <TextView
+                    android:id="@+id/txvNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+                <TextView
+                    android:id="@+id/txvTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+                <TextView
+                    android:id="@+id/txvCelular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="128dp"
+                    tools:layout_editor_absoluteY="81dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvEspa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="128dp"
+            tools:layout_editor_absoluteY="81dp" />
+
+        <TextView
+            android:id="@+id/txvLabelSupp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUPPLIERS"
+            tools:layout_editor_absoluteX="128dp"
+            tools:layout_editor_absoluteY="81dp" />
+
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorLista"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp"
-            android:background="@color/colorLista"/>
-
-
-
+            tools:layout_editor_absoluteY="8dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
